@@ -22,7 +22,8 @@ export const config = {
     //
     specs: [
         // ToDo: define location for spec files here
-        './test/specs/**/*.js'  //**any of js file
+        './test/specs/**/*.js' //**any file with .js extension in any folder inside the test/specs folder
+
     ],
     // Patterns to exclude.
     exclude: [
@@ -52,8 +53,8 @@ export const config = {
     //
     capabilities: [{
         // capabilities for local browser web tests
-        browserName: 'chrome' // or "firefox", "microsoftedge", "safari"
-        browserVersion: '116.0.5793.0' // or 'stable', 'beta', 'dev' or 'canary'
+        browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
+        browserVersion: '129.0.6668.70'
     }],
 
     //
@@ -62,7 +63,7 @@ export const config = {
     // ===================
     // Define all options that are relevant for the WebdriverIO instance here
     //
-    // Level of logging verbosity: trace | debug | info | warn | error | silent  //trace - the most information, silent - no information
+    // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
     //
     // Set specific log levels per logger
@@ -87,7 +88,7 @@ export const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://practice.sdetunicorns.com',
+    // baseUrl: 'http://localhost:8080',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
