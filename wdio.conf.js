@@ -17,13 +17,13 @@ export const config = {
     // worker process. In order to have a group of spec files run in the same worker
     // process simply enclose them in an array within the specs array.
     //
-    // The path of the spec files will be resolved relative from the directory of
-    // of the config file unless it's absolute.
+    // If you are calling `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script),
+    // then the current working directory is where your `package.json` resides, so `wdio`
+    // will be called from there.
     //
     specs: [
         // ToDo: define location for spec files here
-        './test/specs/**/*.js' //**any file with .js extension in any folder inside the test/specs folder
-
+        './test/specs/**/blog.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -52,9 +52,7 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local browser web tests
-        browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
-        browserVersion: '129.0.6668.70'
+        browserName: 'chrome'
     }],
 
     //
@@ -69,7 +67,7 @@ export const config = {
     // Set specific log levels per logger
     // loggers:
     // - webdriver, webdriverio
-    // - @wdio/browserstack-service, @wdio/lighthouse-service, @wdio/sauce-service
+    // - @wdio/browserstack-service, @wdio/devtools-service, @wdio/sauce-service
     // - @wdio/mocha-framework, @wdio/jasmine-framework
     // - @wdio/local-runner
     // - @wdio/sumologic-reporter
@@ -127,7 +125,7 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    // reporters: ['dot'],
+    reporters: ['spec'],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -282,17 +280,5 @@ export const config = {
     * @param {string} newSessionId session ID of the new session
     */
     // onReload: function(oldSessionId, newSessionId) {
-    // }
-    /**
-    * Hook that gets executed before a WebdriverIO assertion happens.
-    * @param {object} params information about the assertion to be executed
-    */
-    // beforeAssertion: function(params) {
-    // }
-    /**
-    * Hook that gets executed after a WebdriverIO assertion happened.
-    * @param {object} params information about the assertion that was executed, including its results
-    */
-    // afterAssertion: function(params) {
     // }
 }
