@@ -74,8 +74,8 @@ it('Find heading element and assert text', async () => {
     const headingText = await headingElement.getText();
 
     //Assert the text
-    // await expect(headingText).toEqual('Think different. Make different.');
-    await expect(headingElement).toHaveText('Think different. Make different.');  //toHaveText() is used to assert the text of an element in wdio, you dont have to create a variable to store the text
+    // await expect(headingText).toEqual('Think different. Make different.');  //jest library withot retry mechanism and built in wait
+    await expect(headingElement).toHaveText('Think different. Make different.');  //toHaveText() is used to assert the text of an element in wdio, you dont have to create a variable to store the text and it has retry mechanism built in; we cannot use it to assert the text of multiple elements
 
 });
 });
