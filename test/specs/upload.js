@@ -28,13 +28,6 @@ describe("Upload Test", () => {
     //open url
     await browser.url("/cart");
 
-    await browser.execute(() => {
-      console.log(
-        ".........................moj consssssole loooooog: " +
-          document.querySelector("#upfile_1"),
-      );
-    });
-
     // Resolve the file path
     const filePath = path.join(__dirname, "../", "data", "picture.jpg");
 
@@ -59,6 +52,9 @@ describe("Upload Test", () => {
     //assertion
     await expect($("#wfu_messageblock_header_1_1")).toHaveText(
       "File picture.jpg uploaded successfully",
-    ); //assertion to check if the file is uploaded successfully
+    ); 
+
+    //sometimes class have style display:none, so we can remove that class and make it visible we can also set display:block, the easiest way is to remove the class
+
   });
 });
