@@ -52,9 +52,8 @@ describe("Upload Test", () => {
     //assertion
     await expect($("#wfu_messageblock_header_1_1")).toHaveText(
       "File picture.jpg uploaded successfully",
-    ); 
+    );
 
     //sometimes class have style display:none, so we can remove that class and make it visible we can also set display:block, the easiest way is to remove the class
-
   });
 });
