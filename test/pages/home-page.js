@@ -1,3 +1,5 @@
+import NavComponent from "./components/nav-comp.js";
+
 class HomePage {
   open() {
     browser.url("/"); //it will open home page from config file
@@ -14,6 +16,11 @@ class HomePage {
   get txtHeading() {
     return $(".elementor-widget-container h1");
   }
+
+  get navComponent(){
+    return NavComponent;
+  }
+
 }
 
 export default new HomePage();  //new=initialize the class, HomePage is the class name
