@@ -1,3 +1,5 @@
+import { $, expect, browser } from "@wdio/globals";
+
 describe("Navigation menu", () => {
   it.only("Get the text of all menu items and assert them, using wait commands", async () => {
     //Open URL

@@ -1,3 +1,5 @@
+import HomePage from "../pages/home-page.js";
+
 //WebdriverIO wraps the Selenium WebDriver to control the browser
 //the code uses Mocha as the testing framework to structure the tests (describe, it)
 
@@ -6,9 +8,10 @@
 
 describe("Home", () => {
   //first argument is a string ('Home'), which is the name of the test suite, and the second argument is a function (a callback) that contains the individual tests
-  it.skip("Open URL & assert title", async () => {
+  it("Open URL & assert title", async () => {
     //Open URL
-    await browser.url("https://practice.sdetunicorns.com/");
+    //await browser.url("https://practice.sdetunicorns.com/");  //this was without page object model
+    await HomePage.open(); //POM
 
     //Assert Title
     await expect(browser).toHaveTitle(
@@ -31,7 +34,7 @@ describe("Home", () => {
   // Act: Perform the action being tested (open the page).
   // Assert: Verify the expected outcome (check the title).
 
-  it.skip("Open URL & assert url", async () => {
+  it("Open URL & assert url", async () => {
     //Open URL
     await browser.url("https://practice.sdetunicorns.com/about/");
 
@@ -39,12 +42,12 @@ describe("Home", () => {
     await expect(browser).toHaveUrl("https://practice.sdetunicorns.com/about/");
   });
 
-  it.skip("Click get started button and assert url contains get-started text", async () => {
+  it("Click get started button and assert url contains get-started text", async () => {
     //Open URL
-    await browser.url("https://practice.sdetunicorns.com/");
-
+    await HomePage.open();
     // Click the "Get Started" button
-    await $("#get-started").click(); // $() is a WebdriverIO selector that finds an element by CSS selector  (ID here)
+    //await $("#get-started").click(); // $() is a WebdriverIO selector that finds an element by CSS selector  (ID here)
+    await HomePage.btnGetStarted.click();
 
     // Assert that the URL contains the text "get-started"
     //    await expect(browser).toHaveUrlContaining('get-started'); //toHaveUrlContaining() isn't supported anymore
@@ -52,12 +55,12 @@ describe("Home", () => {
     expect(currentUrl).toContain("get-started");
   });
 
-  it.skip("Click on the logo and make sure that url doesnt contain get-started text", async () => {
+  it("Click on the logo and make sure that url doesnt contain get-started text", async () => {
     //Open URL
-    await browser.url("https://practice.sdetunicorns.com/");
+    await HomePage.open();
 
     // Click on the logo
-    await $("img.custom-logo").click();
+    await HomePage.logo.click();
 
     // Assert that the URL doesnt contain the text "get-started"
     //    await expect(browser).toHaveUrlContaining('get-started'); //toHaveUrlContaining() isn't supported anymore
@@ -67,16 +70,16 @@ describe("Home", () => {
 
   it("Find heading element and assert text", async () => {
     //Open URL
-    await browser.url("https://practice.sdetunicorns.com/");
+    await HomePage.open();
 
     // Find heading element
-    const headingElement = await $(".elementor-widget-container h1");
+    const headingElement = await HomePage.txtHeading;
 
     // Get the text
     const headingText = await headingElement.getText();
 
     //Assert the text
-    // await expect(headingText).toEqual('Think different. Make different.');  //jest library withot retry mechanism and built in wait
+    // await expect(headingText).toEqual('Think different. Make different.');  //jest library without retry mechanism and built in wait
     await expect(headingElement).toHaveText("Think different. Make different."); //toHaveText() is used to assert the text of an element in wdio, you dont have to create a variable to store the text and it has retry mechanism built in; we cannot use it to assert the text of multiple elements
   });
 });
