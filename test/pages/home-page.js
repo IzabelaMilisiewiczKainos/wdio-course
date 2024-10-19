@@ -17,10 +17,9 @@ class HomePage {
     return $(".elementor-widget-container h1");
   }
 
-  get navComponent(){
+  get navComponent() {
     return NavComponent;
   }
-
 }
 
-export default new HomePage();  //new=initialize the class, HomePage is the class name
+export default new HomePage(); //new=initialize the class, HomePage is the class name

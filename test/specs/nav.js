@@ -26,7 +26,6 @@ describe("Navigation menu", () => {
     await $("#primary-menu li[id*=menu]").waitForDisplayed({ timeout: 5000 });
     await $("#primary-menu li[id*=menu]").waitForClickable();
 
-
     const allNavLinks = await HomePage.navComponent.linksNavMenu;
     for (const link of allNavLinks) {
       await link.waitForDisplayed({ timeout: 5000 });

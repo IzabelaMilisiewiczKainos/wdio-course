@@ -1,7 +1,9 @@
+import BlogPage from "../pages/blog-page.js";
+
 describe("Blog page", () => {
   it("Check how many articles are on the page and if each of them has more than 10 letters", async () => {
     //Open URL
-    await browser.url("https://practice.sdetunicorns.com/blog/");
+    await BlogPage.open();
 
     // Check how many articles are on the page
     // const articlesOnThePage = await $$('article[id*=post]');
@@ -16,7 +18,7 @@ describe("Blog page", () => {
     // }
 
     //Get the Recent Post List Elements
-    const recentPostList = await $$("#recent-posts-3 ul li");
+    const recentPostList = await BlogPage.recentPostsList;
 
     //Loop through the list and assert the text length is greater than 10
     for (const article of recentPostList) {
